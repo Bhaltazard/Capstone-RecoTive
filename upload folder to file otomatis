@@ -4,7 +4,7 @@ const path = require('path');
 
 // Initialize storage
 const storage = new Storage({
-  keyFilename: 'capstone-recotive-5d79a14c2ccb.json',
+  keyFilename: './capstone-recotive-5d79a14c2ccb.json',
 });
 
 const bucketName = 'capstone-recotive.appspot.com';
@@ -19,7 +19,7 @@ const watcher = chokidar.watch(folderPath, { ignored: /^\./, persistent: true })
 // Mengunggah file saat ada perubahan
 watcher.on('add', (filePath) => {
   const fileName = path.basename(filePath);
-  const destination = fileName;
+  const destination = `project/${fileName}`;
 
   bucket.upload(filePath, { destination }, (err, file) => {
     if (err) {
