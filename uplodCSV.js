@@ -10,15 +10,15 @@ const bucket = storage.bucket(bucketName)
 
 // Sending the upload request
 bucket.upload(
-  `pemandangan.jpg`,
-  {
-    destination: `pemandangan.jpg`,
-  },
-  function (err, file) {
-    if (err) {
-      console.error(`Error uploading image image_to_upload.jpeg: ${err}`)
-    } else {
-      console.log(`Image image_to_upload.jpeg uploaded to ${bucketName}.`)
+    `catviewCount.csv`,
+    {
+      destination: `coba/catviewCount.csv`,
+    },
+    function (err, file) {
+      if (err) {
+        console.error(`Error uploading file catviewCount.csv: ${err}`)
+      } else {
+        console.log(`file catviewCount.csv uploaded to ${bucketName}.`)
+      }
     }
-  }
-)
+  )
