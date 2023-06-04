@@ -54,8 +54,8 @@ getAllFilesFromFolder(folderPath)
         .then(data => {
           const dataString = data.toString('utf-8'); // Ubah buffer menjadi string
 
-          // Menyimpan dataString sebagai file CSV
-          const fileName = `${index}.csv`;
+          // Menyimpan dataString sebagai file CSV dengan nama yang sama
+          const fileName = file.name.replace(folderPath, ''); // Menghapus folderPath dari nama file
           fs.writeFile(fileName, dataString, 'utf-8', (err) => {
             if (err) {
               console.error(`Terjadi kesalahan saat menyimpan file ${fileName}:`, err);
