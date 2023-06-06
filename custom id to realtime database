@@ -1,0 +1,38 @@
+var admin = require("firebase-admin");
+
+var serviceAccount = require("./capstone-recotive-firebase-adminsdk-91sz0-13707e85bd.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://capstone-recotive-default-rtdb.asia-southeast1.firebasedatabase.app"
+});
+
+// Referensi ke database
+var db = admin.database();
+var collectionRef = db.ref('youtube');
+    
+// Membuat data baru di koleksi dengan ID 1
+var newDataRef1 = collectionRef.child('1');
+newDataRef1.set({
+  content: 'Hello',
+  youtube: 'Video 1'
+}, function(error) {
+  if (error) {
+    console.log("Data gagal ditambahkan: " + error);
+  } else {
+    console.log("Data berhasil ditambahkan dengan ID: 1");
+  }
+});
+
+// Membuat data baru di koleksi dengan ID 2
+var newDataRef2 = collectionRef.child('2');
+newDataRef2.set({
+  content: 'Hi',
+  youtube: 'Video 2'
+}, function(error) {
+  if (error) {
+    console.log("Data gagal ditambahkan: " + error);
+  } else {
+    console.log("Data berhasil ditambahkan dengan ID: 2");
+  }
+});
