@@ -3,7 +3,7 @@ const fs = require("fs");
 const csv = require("csv-parser");
 
 // Inisialisasi aplikasi Firebase
-const serviceAccount = require("./capstone-recotive-firebase-adminsdk-91sz0-13707e85bd.json");
+const serviceAccount = require("./path/serviceAccountKey.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://capstone-recotive-default-rtdb.asia-southeast1.firebasedatabase.app"
@@ -47,7 +47,7 @@ collectionRef.once("value", (snapshot) => {
 
   const dataToAdd = []; // Array untuk menyimpan data yang akan ditambahkan
 
-  fs.createReadStream("image/catrelevance.csv")
+  fs.createReadStream("./csv/catrelevance.csv")
     .pipe(csv())
     .on("data", (data) => {
       // Menambahkan data ke array dengan ID yang telah ditetapkan
@@ -78,3 +78,5 @@ collectionRef.once("value", (snapshot) => {
       console.error("Terjadi kesalahan saat membaca file CSV:", error);
     });
 });
+
+
